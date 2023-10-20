@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-int dp[100][100];
 bool knapsack(int n, int weight[], int sum)
 {
     if (sum == 0)
