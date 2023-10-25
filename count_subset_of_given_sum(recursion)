@@ -1,39 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-auto start = std::chrono::high_resolution_clock::now();
-
 int knapsack(int n, vector<int>& nums, int sum) {
-    // Base case
-    if (sum == 0)
-        return 1;
-    
-    // Base case: If n is 0 and sum is not 0, there is no subset
-    if (n == 0)
-        return 0;
-
-    int left = 0;
-    int right = 0;
-
-    // Taking element
+    if (sum == 0) return 1;
+    if (n == 0) return 0;
+    int l=0,r=0;
     if (nums[n - 1] <= sum)
-        left = knapsack(n - 1, nums, sum - nums[n - 1]);
+        l = knapsack(n - 1, nums, sum - nums[n - 1]) + knapsack(n - 1, nums, sum);
+    else
+        r = knapsack(n - 1, nums, sum);
 
-    // Not taking the element
-    right = knapsack(n - 1, nums, sum);
-
-    return left + right;
+    return l+r;
 }
 
 int main() {
-    vector<int> nums = {2, 3, 5, 6, 8, 10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    // memset(dp, -1, sizeof(dp)); 
+    vector<int> nums = {2, 3, 5, 6, 8, 10};
     int n = nums.size();
-    int answer = knapsack(n, nums, 10);
+    int sum = 10;
+    int answer = knapsack(n, nums, sum);
     cout << "Your answer is " << answer << endl;
-
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> duration = end - start;
-    std::cout << "Compilation time: " << duration.count() << " milliseconds" << std::endl;
 
     return 0;
 }
