@@ -1,34 +1,32 @@
+// memoization
 #include<bits/stdc++.h>
 using namespace std;
-
+int dp[100][100];
 int knapsack(int n, vector<int>& nums, int sum) {
-    vector<vector<int>> dp(n + 1, vector<int>(sum + 1, 0));
-
-    // Base case initialization
-    for(int i = 0; i <= n; i++)
-        dp[i][0] = 1;
-
-    // Build the dp table
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= sum; j++) {
-            // If the current element is less than or equal to the sum,
-            // consider both including and excluding the element
+    for(int i=0;i<n+1;i++){
+        for(int j=0;j<sum+1;j++){
+            if(i==0)dp[i][j]=0;
+            else if(j==0)dp[i][j]=1;
+        }
+    }
+    dp[0][0]=1;
+    int l=0,r=0;
+     for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= sum; j++) {
             if (nums[i - 1] <= j)
                 dp[i][j] = dp[i - 1][j - nums[i - 1]] + dp[i - 1][j];
-            // If the current element is greater than the sum,
-            // only consider excluding the element
             else
                 dp[i][j] = dp[i - 1][j];
         }
     }
-
-    return dp[n][sum];
+return dp[n][sum];
 }
 
 int main() {
-    vector<int> nums = {2, 3, 5, 6, 8, 10};
+    memset(dp, -1, sizeof(dp)); 
+    vector<int> nums = {1,2,3,4,5,4};
     int n = nums.size();
-    int sum = 10;
+    int sum = 5;
     int answer = knapsack(n, nums, sum);
     cout << "Your answer is " << answer << endl;
 
