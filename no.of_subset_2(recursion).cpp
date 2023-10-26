@@ -2,12 +2,14 @@
 using namespace std;
 
 int knapsack(int n, vector<int>& nums, int csum, int sum, int diff) {
-    if (csum + diff == sum) return 1;
+    if (abs(csum - sum) == diff) {
+        return 1;
+        
+    }
     if (n == 0) return 0;
     
       int l = knapsack(n - 1, nums, csum + nums[n - 1], sum, diff) + knapsack(n - 1, nums, csum, sum, diff);
         int r = knapsack(n - 1, nums, csum, sum, diff);
-
     return max(l , r);
 }
 
