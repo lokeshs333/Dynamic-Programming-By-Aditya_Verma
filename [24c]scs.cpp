@@ -1,4 +1,4 @@
-// shortest common subsequence
+// shortest common super subsequence
 #include<bits/stdc++.h>
 using namespace std;
 int dp[1001][1001];
