@@ -25,10 +25,10 @@ string lcs(int n, int m, string a, string b){
         i--;
         j--;
     } else if (dp[i][j-1] > dp[i-1][j]) {
-        ans.push_back(b[j-1]);  // Corrected
+        ans.push_back(b[j-1]);
         j--;
     } else {
-        ans.push_back(a[i-1]);  // Corrected
+        ans.push_back(a[i-1]);  
         i--;
     }
 }
@@ -37,8 +37,8 @@ string lcs(int n, int m, string a, string b){
 }
 
 int main() {
-    string a = "abcbf";
-    string b="abcdaf";
+    string a = "abcdaf";
+    string b="acbcf";
     int n = a.size();
     int m = b.size();
     string ans = lcs(n, m, a, b);
