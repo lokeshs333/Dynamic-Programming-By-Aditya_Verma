@@ -37,11 +37,12 @@ string lcs(int n, int m, string a, string b){
 }
 
 int main() {
-    string a = "agbcba";
-    string b=a;
+    string a = "abcbf";
+    string b="abcdaf";
     int n = a.size();
     int m = b.size();
     string ans = lcs(n, m, a, b);
+    reverse(ans.begin(),ans.end());
     cout << "Print shortest common Supersequence " <<ans << endl;
     return 0;
 }
