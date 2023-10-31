@@ -1,4 +1,4 @@
-//insertion delrtion to make a string from another string
+//insertion deletion to make a string from another string
 #include<bits/stdc++.h>
 using namespace std;
 int dp[1001][1001];
