@@ -19,7 +19,7 @@ string lcs(int n, int m, string a, string b){
     string ans="";
     int i=n;
     int j=m;
-    while(i!=0 || j!=0) {
+    while(i!=0 && j!=0) {
     if (a[i-1] == b[j-1]) {
         ans.push_back(a[i-1]);  // Corrected
         i--;
